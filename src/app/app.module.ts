@@ -10,13 +10,15 @@ import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { AuthInterceptor } from './http-interceptors/auth-interceptor';
 import { LogoutComponent } from './logout/logout.component';
+import { JobListComponent } from './job-list/job-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    JobListComponent
   ],
   imports: [
     BrowserModule,
