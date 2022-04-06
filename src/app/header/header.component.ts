@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from '../service/authentication.service';
+import { AuthenticationService, Role } from '../service/authentication.service';
 
 @Component({
   selector: 'app-header',
@@ -17,6 +17,10 @@ export class HeaderComponent implements OnInit {
 
   isUserLogged(): boolean {
     return this.authService.isUserLogged();
+  }
+
+  isUserAdmin(): boolean {
+    return this.isUserLogged() && this.authService.userHasRole(Role.ADMIN);
   }
 
 }
