@@ -11,6 +11,9 @@ import { LoginComponent } from './login/login.component';
 import { AuthInterceptor } from './http-interceptors/auth-interceptor';
 import { LogoutComponent } from './logout/logout.component';
 import { JobListComponent } from './job-list/job-list.component';
+import { UserListComponent } from './user-list/user-list.component';
+
+import {TableModule} from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -18,13 +21,15 @@ import { JobListComponent } from './job-list/job-list.component';
     HeaderComponent,
     LoginComponent,
     LogoutComponent,
-    JobListComponent
+    JobListComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    TableModule
   ],
   providers: [
     {  
