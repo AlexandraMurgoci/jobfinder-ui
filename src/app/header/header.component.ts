@@ -23,4 +23,8 @@ export class HeaderComponent implements OnInit {
     return this.isUserLogged() && this.authService.userHasRole(Role.ADMIN);
   }
 
+  isUserHr(): boolean {
+    return this.isUserLogged() && this.authService.userHasRole(Role.HR);
+  }
+
 }
