@@ -1,0 +1,21 @@
+<div class="p-col-12 p-md-4">
+    <div class="product-grid-item card">
+        <div class="product-grid-item-top">
+            <div>
+                <i class="pi pi-send product-category-icon"></i>
+                <span class="product-category">{{job.type}}</span>
+            </div>
+            <span [class]="'product-badge status-instock'">{{job.city}}</span>
+        </div>
+        <div class="product-grid-item-content">
+            <a href="/job/view/{{job.id}}">
+                <img class="img-thumbnail small-img" src="https://logo.clearbit.com/{{job.company}}.com?size=80" alt="">
+                <div class="product-name">{{job.title}}</div>
+            </a>
+            <div class="product-description">{{job.company}}</div>
+        </div>
+        <div class="product-grid-item-bottom">
+            <span class="product-price">{{job.level}}</span>
+        </div>
+    </div>
+</div>
