@@ -1,11 +1,21 @@
-<p>job-list works!</p>
-<p>job-list works!</p>
-
-<p>job-list works!</p>
-<p>job-list works!</p>
-<p>job-list works!</p>
-<p>job-list works!</p>
-<p>job-list works!</p>
-<p>job-list works!</p>
-<p>job-list works!</p>
-<p>job-list works!</p>
+<hr class="mt-5 mb-5">
+<div class="card">
+    <p-dataView #dv [value]="jobList" [paginator]="true" [rows]="9" [lazy]="true" (onLazyLoad)="loadData($event)"
+        [totalRecords]="totalRecords" layout="grid">
+        <ng-template pTemplate="header">
+            <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between">
+                <!-- <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By Price" (onChange)="onSortChange($event)" styleClass="p-mb-2 p-mb-md-0"></p-dropdown> -->
+                <span class="p-input-icon-left p-mb-2 p-mb-md-0">
+                    <input type="search" pInputText class="fit-text" placeholder="Search by title, company or city"
+                        [(ngModel)]="searchParam" (ngModelChange)="inputValueChanged()">
+                </span>
+                <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+            </div>
+        </ng-template>
+        <ng-template let-job pTemplate="listItem">
+            <app-job-list-view [job]=job></app-job-list-view>
+        </ng-template>
+        <ng-template let-job pTemplate="gridItem">
+            <app-job-grid-view [job]=job></app-job-grid-view>
+        </ng-template>
+    </p-dataView>

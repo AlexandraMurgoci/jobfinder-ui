@@ -19,5 +19,11 @@ export class JobService {
   getJobById(id: string) {
     return this.http.get(this.baseUrl+"job/view/" + id);
   }
+
+  search(page: number, searchParam: string) {
+    return searchParam && (searchParam+"")!="" ?
+     this.http.get(this.baseUrl+"job/search?page="+page+"&searchParam="+searchParam)
+     : this.http.get(this.baseUrl+"job/search?page="+page);
+  }
   
 }
