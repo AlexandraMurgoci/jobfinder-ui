@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { JobService } from '../service/job.service';
 
 export interface Job {
-  jobId: number,
+  id: number,
   title: string,
   company: string,
   level: string,
@@ -36,13 +36,46 @@ export class JobDetailsComponent implements OnInit {
 
   levelOption: any = ['Middle', 'Senior', 'Expert'];
 
+  createMode: boolean = false;
+  viewMode: boolean = false;
+
   constructor(
     private formBuilder: FormBuilder,
     private jobService: JobService,
-    private router: Router
+    private router: Router,
+    private activatedRoute : ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    this.activatedRoute.url.subscribe(url => {
+      if(url[1].toString() == 'view') {
+        this.viewMode = true;
+        this.getAndDisplayJobById(url[2].toString());
+      }
+      else {
+        this.createMode = true;
+      }
+    })
+  }
+
+  resetModes() {
+    this.createMode = false;
+    this.viewMode = false;
+  }
+
+  getAndDisplayJobById(id: string) {
+    this.jobService.getJobById(id).subscribe(
+      (result: any) => {
+        this.setField("jobId", result.id);
+        this.setField("title", result.title);
+        this.setField("company", result.company);
+        this.setField("level", result.level);
+        this.setField("type", result.type);
+        this.setField("city", result.city);
+        this.setField("requirements", result.requirements);
+        this.setField("description", result.description);
+      }
+    );
   }
 
   // convenience getter for easy access to form fields
@@ -58,16 +91,19 @@ export class JobDetailsComponent implements OnInit {
     return this.form.get(field)?.errors;
   }
 
+  public setField(field: string, value: any) {
+    this.form.get(field)?.patchValue(value);
+  }
+
   onChangeLevel(event: any) {
     //TODO if needed
   }
 
   onSubmit() {
-    console.log("SUBMIT");
     this.submitted = true;
     if (!this.form.invalid) {
       let job: Job = {
-        jobId: this.form.get("jobId")?.value,
+        id: this.form.get("jobId")?.value,
         title: this.form.get("title")?.value,
         company: this.form.get("company")?.value,
         level: this.form.get("level")?.value,

@@ -12,7 +12,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'user/search', component: UserListComponent },
-  { path: 'job/create-or-update', component: JobDetailsComponent }
+  { path: 'job/create-or-update', component: JobDetailsComponent },
+  { path: 'job/view/:id', component: JobDetailsComponent }
 ];
 
 @NgModule({
