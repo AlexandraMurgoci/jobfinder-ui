@@ -13,9 +13,9 @@
             </div>
         </ng-template>
         <ng-template let-job pTemplate="listItem">
-            <app-job-list-view [job]=job></app-job-list-view>
+            <app-job-list-view [job]=job (jobUpdate)="onJobUpdate($event)" (jobDelete)="onJobDelete($event)"></app-job-list-view>
         </ng-template>
         <ng-template let-job pTemplate="gridItem">
-            <app-job-grid-view [job]=job></app-job-grid-view>
+            <app-job-grid-view [job]=job (jobUpdate)="onJobUpdate($event)" (jobDelete)="onJobDelete($event)"></app-job-grid-view>
         </ng-template>
     </p-dataView>

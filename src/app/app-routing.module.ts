@@ -13,7 +13,8 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent },
   { path: 'user/search', component: UserListComponent },
   { path: 'job/create', component: JobDetailsComponent },
-  { path: 'job/view/:id', component: JobDetailsComponent }
+  { path: 'job/view/:id', component: JobDetailsComponent },
+  { path: 'job/edit/:id', component: JobDetailsComponent }
 ];
 
 @NgModule({

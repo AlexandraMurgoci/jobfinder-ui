@@ -38,6 +38,7 @@ export class JobDetailsComponent implements OnInit {
 
   createMode: boolean = false;
   viewMode: boolean = false;
+  editMode: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -48,8 +49,13 @@ export class JobDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.url.subscribe(url => {
+      this.resetModes();
       if(url[1].toString() == 'view') {
         this.viewMode = true;
+        this.getAndDisplayJobById(url[2].toString());
+      }
+      else if(url[1].toString() == 'edit') {
+        this.editMode = true;
         this.getAndDisplayJobById(url[2].toString());
       }
       else {

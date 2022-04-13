@@ -16,6 +16,8 @@
         </div>
         <div class="product-grid-item-bottom">
             <span class="product-price">{{job.level}}</span>
+            <p-button icon="pi pi-chevron-circle-down" *ngIf="isUserHr()"(onClick)="handleUpdate(job)"></p-button>
+            <button pButton pRipple type="button" *ngIf="isUserHr()" icon="pi pi-trash" class="p-button-danger" (click)="handleDelete(job)"></button>
         </div>
     </div>
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { JobService } from '../service/job.service';
 import { Subject } from 'rxjs';
 import { debounceTime , distinctUntilChanged } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-job-list',
@@ -17,7 +18,8 @@ export class JobListComponent implements OnInit {
   customInput : Subject<string> = new Subject();
 
   constructor(
-    private jobService: JobService
+    private jobService: JobService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -48,6 +50,19 @@ export class JobListComponent implements OnInit {
 
   inputValueChanged(){
     this.customInput.next(this.searchParam);
+  }
+
+  onJobUpdate(event: any) {
+    this.router.navigateByUrl('job/edit/'+event.id);
+  }
+
+  onJobDelete(event: any) {
+    this.jobService.deleteJob(event).subscribe(
+      () => {
+        console.log("Delete success");
+        this.reloadData();
+      }
+    );
   }
 
 }

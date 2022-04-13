@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Job } from '../job-details/job-details.component';
 
 @Injectable({
@@ -24,6 +23,10 @@ export class JobService {
     return searchParam && (searchParam+"")!="" ?
      this.http.get(this.baseUrl+"job/search?page="+page+"&searchParam="+searchParam)
      : this.http.get(this.baseUrl+"job/search?page="+page);
+  }
+
+  deleteJob(job: any) {
+    return this.http.post(this.baseUrl+"hr/job/delete", job);
   }
   
 }

@@ -10,6 +10,8 @@
         </div>
         <div class="product-list-action">
             <span class="product-price">{{job.level}}</span>
+            <p-button *ngIf="isUserHr()" icon="pi pi-chevron-circle-down" (onClick)="handleUpdate(job)"></p-button>
+            <button pButton pRipple *ngIf="isUserHr()" type="button" icon="pi pi-trash" class="p-button-danger" (click)="handleDelete(job)"></button>
             <span [class]="'product-badge status-instock'">{{job.city}}</span>
         </div>
     </div>

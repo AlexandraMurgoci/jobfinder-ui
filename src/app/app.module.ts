@@ -20,6 +20,7 @@ import {DataViewModule} from 'primeng/dataview';
 import { JobDetailsComponent } from './job-details/job-details.component';
 import { JobGridViewComponent } from './job-list/job-grid-view/job-grid-view.component';
 import { JobListViewComponent } from './job-list/job-list-view/job-list-view.component';
+import {ButtonModule} from 'primeng/button';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { JobListViewComponent } from './job-list/job-list-view/job-list-view.com
     ReactiveFormsModule,
     TableModule,
     DropdownModule,
-    DataViewModule
+    DataViewModule,
+    ButtonModule
   ],
   providers: [
     {  
