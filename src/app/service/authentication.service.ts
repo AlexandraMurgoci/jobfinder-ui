@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 export enum Role {
   USER = "ROLE_USER",
   ADMIN = "ROLE_ADMIN",
-  HR = "ROLE_HR"
+  HR = "ROLE_HR",
+  INTERVIEWER = "ROLE_INTERVIEW"
 }
 
 @Injectable({

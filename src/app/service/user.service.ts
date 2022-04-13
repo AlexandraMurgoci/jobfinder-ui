@@ -21,4 +21,14 @@ export class UserService {
      this.http.get(this.baseUrl+"admin/user/search?page="+page+"&searchParam="+searchParam)
      : this.http.get(this.baseUrl+"admin/user/search?page="+page);
   }
+
+  create(user: any) {
+    let createUser = {
+      email: user.email,
+      username: user.username,
+      password: user.password,
+      roles: user.roles
+    };
+    return this.http.post(this.baseUrl + "admin/user/create", createUser);
+  }
 }

@@ -1,0 +1,57 @@
+<div class="container" style="margin-top: 70px;">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+            <div class="form-group col-5" [hidden]="createMode">
+                <label>User Id</label>
+                <input type="number" formControlName="id" [readonly]="true" class="form-control" />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-5">
+                <label>Username</label>
+                <input type="text" formControlName="username" [readonly]="viewMode" class="form-control" [ngClass]="{ 'is-invalid': submitted && getFieldErrors('username') }" />
+                <div *ngIf="submitted && getFieldErrors('username')" class="invalid-feedback">
+                    <div>Username is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-5">
+                <label>Password</label>
+                <input type="text" formControlName="password" [readonly]="viewMode" class="form-control" [ngClass]="{ 'is-invalid': submitted && getFieldErrors('password') }" />
+                <div *ngIf="submitted && getFieldErrors('password')" class="invalid-feedback">
+                    <div>Password is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-5">
+                <label>Email</label>
+                <input type="text" formControlName="email" [readonly]="viewMode" class="form-control" [ngClass]="{ 'is-invalid': submitted && getFieldErrors('email') }" />
+                <div *ngIf="submitted && getFieldErrors('email')" class="invalid-feedback">
+                    <div>Email is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-5">
+                <label>Roles</label>
+                <!-- <select formControlName="level" (change)="onChangeLevel($event)" [attr.disabled]="viewMode ? '' : null" class="form-control" [ngClass]="{ 'is-invalid': submitted && getFieldErrors('level') }">
+                    <option >Select level</option>
+                    <option *ngFor="let levelOp of levelOption" [ngValue]="levelOp">
+                        {{ levelOp }}
+                    </option>
+                </select> -->
+                <!-- TODO adapt for view and update mode -->
+                <p-multiSelect [options]="roleOptions" formControlName="roles" optionLabel="name" optionValue="code" class="form-control" [ngClass]="{ 'is-invalid': submitted && getFieldErrors('roles') }"></p-multiSelect>
+                <div *ngIf="submitted && getFieldErrors('roles')" class="invalid-feedback">
+                    <div>Roles are required</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-success" [hidden]="viewMode" type="submit">Submit</button>
+            <button class="btn btn-danger" [hidden]="viewMode" (click)="onCancel()">Cancel</button>
+        </div>
+    </form>
+</div>

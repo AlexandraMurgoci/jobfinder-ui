@@ -1,5 +1,6 @@
 <hr class="mt-5 mb-5">
 <div class="container mt-5">
+    <button pButton pRipple type="button" class="p-button-raised p-button-success" (click)="handleCreate($event)">Create</button>
     <p-table [value]="users" [autoLayout]=true 
         selectionMode="single" [(selection)]="selectedUser" (onRowSelect)="onRowSelect($event)"
         [paginator]="true" [rows]="10" [totalRecords]="totalRecords" [lazy]="true" (onLazyLoad)="loadUsers($event)">

@@ -17,10 +17,12 @@ import { UserListComponent } from './user-list/user-list.component';
 import {TableModule} from 'primeng/table';
 import {DropdownModule} from 'primeng/dropdown';
 import {DataViewModule} from 'primeng/dataview';
+import {MultiSelectModule} from 'primeng/multiselect';
 import { JobDetailsComponent } from './job-details/job-details.component';
 import { JobGridViewComponent } from './job-list/job-grid-view/job-grid-view.component';
 import { JobListViewComponent } from './job-list/job-list-view/job-list-view.component';
 import {ButtonModule} from 'primeng/button';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import {ButtonModule} from 'primeng/button';
     UserListComponent,
     JobDetailsComponent,
     JobGridViewComponent,
-    JobListViewComponent
+    JobListViewComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,8 @@ import {ButtonModule} from 'primeng/button';
     TableModule,
     DropdownModule,
     DataViewModule,
-    ButtonModule
+    ButtonModule,
+    MultiSelectModule
   ],
   providers: [
     {  

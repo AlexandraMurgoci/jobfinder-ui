@@ -67,4 +67,8 @@ export class UserListComponent implements OnInit {
     this.customInput.next(this.searchParam);
   }
 
+  handleCreate(event: any) {
+    this.router.navigateByUrl('/user/create');
+  }
+
 }
